@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: myanmarFonts;
+  src: url(./assets/fonts/Regular.ttf);
+}
+body {
+  font-family: myanmarFonts;
+}
+h1 {
+  font-size: 200px;
+}

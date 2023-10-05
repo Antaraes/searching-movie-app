@@ -1,0 +1,4 @@
+export const APIKey = "1bbb79e";
+export const TMDBKey = "f52b48e0afa65ec3096434d3c393aaac";
+export const access_key =
+  "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmNTJiNDhlMGFmYTY1ZWMzMDk2NDM0ZDNjMzkzYWFhYyIsInN1YiI6IjY1MWQxZTNlZWE4NGM3MDEwYzE0ZjAzMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.vebldO7oj8d942jHTUVItQm5y3Jn-wysz_Yc0KLm-uE";
