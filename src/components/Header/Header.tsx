@@ -1,4 +1,4 @@
-import { FC, useState, useEffect, createElement } from "react";
+import { FC, useState, useEffect, createElement, FormEvent } from "react";
 import {
   Navbar,
   Collapse,
@@ -111,7 +111,7 @@ const Header: FC<HeaderProps> = () => {
   useEffect(() => {
     window.addEventListener("resize", () => window.innerWidth >= 960 && setOpenNav(false));
   }, []);
-  const submitHandler = (e) => {
+  const submitHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     dipatch(fetchAsyncMovies(term));
     dipatch(fetchAsyncShow(term));
@@ -143,6 +143,7 @@ const Header: FC<HeaderProps> = () => {
             containerProps={{
               className: "min-w-[288px]",
             }}
+            crossOrigin={undefined}
           />
           <Button type="submit" size="sm" className="!absolute right-1 top-1 rounded">
             Search

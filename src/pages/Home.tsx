@@ -10,8 +10,8 @@ const Home: FC<HomeProps> = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(fetchAsyncMovies());
-    dispatch(fetchAsyncShow());
+    dispatch(fetchAsyncMovies("Some"));
+    dispatch(fetchAsyncShow("Harry"));
   }, []);
   return (
     <div className="  overflow-x-hidden max-w-screen-3xl ">

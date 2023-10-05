@@ -43,9 +43,11 @@ const MovieDetail: FC<MovieDetailProps> = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await dispatch(fetchAsyncShowDetail(imdbID));
-      setData(result.payload);
-      console.log(data);
+      if (imdbID) {
+        const result = await dispatch(fetchAsyncShowDetail(imdbID));
+        setData(result.payload);
+        console.log(result.payload);
+      }
     };
 
     fetchData();

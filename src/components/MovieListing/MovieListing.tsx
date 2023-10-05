@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, ReactNode } from "react";
 import { useAppSelector } from "../../redux/hook";
 import { getAllMovies, getAllShows } from "../../redux/movies/movieSlice";
 import MovieCard from "../MovieDetail/MovieCard";
@@ -10,8 +10,9 @@ const MovieListing: FC<MovieListingProps> = () => {
   const movies = useAppSelector(getAllMovies);
   const isLoading = useAppSelector((state) => state.movies.isLoading);
   const shows = useAppSelector(getAllShows);
-  let renderMovies,
-    renderShows = "";
+  let renderMovies: ReactNode = "";
+  let renderShows: ReactNode = "";
+
   if (movies.Response === "True") {
     renderMovies = movies.Search.map((movie, index) => {
       if (isLoading) {

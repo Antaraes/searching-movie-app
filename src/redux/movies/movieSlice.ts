@@ -2,38 +2,60 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import movieApi from "../../api/movieApi";
 import { APIKey } from "../../api/MovieApiKey";
 import { RootState } from "../store";
+import { SearchMovies } from "../../components/MovieDetail/MovieCard";
 export const fetchAsyncMovies = createAsyncThunk(
   "movie/fetchAyncMovies",
   async (term: string = "Genius") => {
-    const response = await movieApi
-      .get(`?apikey=${APIKey}&s=${term}&type=movie`)
-      .catch((err) => console.log(err));
-    return response.data;
+    try {
+      const response = await movieApi.get(`?apikey=${APIKey}&s=${term}&type=movie`);
+      return response.data;
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
   }
 );
-const initialState = {
-  movies: {},
-  shows: {},
-  details: {},
+interface MovieState {
+  movies: { Response: string; Search: SearchMovies[] };
+  shows: { Response: string; Search: SearchMovies[] };
+  details: { Response: string };
+  isLoading: boolean;
+}
+
+const initialState: MovieState = {
+  movies: { Response: "", Search: [] },
+  shows: { Response: "", Search: [] },
+  details: { Response: "" },
   isLoading: false,
 };
 
 export const fetchAsyncShow = createAsyncThunk(
   "movie/fetchAyncShow",
   async (term: string = "ww2") => {
-    const response = await movieApi
-      .get(`?apikey=${APIKey}&s=${term}&type=series`)
-      .catch((err) => console.log(err));
-    return response.data;
+    try {
+      const response = await movieApi.get(`?apikey=${APIKey}&s=${term}&type=series`);
+      console.log(response.data);
+
+      return response.data;
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
   }
 );
 
-export const fetchAsyncShowDetail = createAsyncThunk("movie/fetchAyncShowDetail", async (id) => {
-  const response = await movieApi
-    .get(`?apikey=${APIKey}&i=${id}&Plot=full`)
-    .catch((err) => console.log(err));
-  return response.data;
-});
+export const fetchAsyncShowDetail = createAsyncThunk(
+  "movie/fetchAyncShowDetail",
+  async (id: string) => {
+    try {
+      const response = await movieApi.get(`?apikey=${APIKey}&i=${id}&Plot=full`);
+      return response.data;
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
+);
 
 const movieSlice = createSlice({
   name: "movie",

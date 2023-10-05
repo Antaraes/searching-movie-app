@@ -7,13 +7,14 @@ import {
   Typography,
   Button,
 } from "@material-tailwind/react";
+export type SearchMovies = {
+  Poster: string;
+  Title: string;
+  Year: string;
+  imdbID: string;
+};
 interface MovieCardProps {
-  data: {
-    Poster: string;
-    Title: string;
-    Year: string;
-    imdbID: string;
-  };
+  data: SearchMovies;
 }
 import { Link } from "react-router-dom";
 
